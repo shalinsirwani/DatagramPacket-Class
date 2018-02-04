@@ -1,0 +1,37 @@
+Java DatagramPacket.setLength(int length)
+-----------------------------------------
+
+Syntax:-
+
+public void setLength(int length)
+
+Example:-
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+public class Main {
+  private final static int BUFSIZE = 30;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      byte buffer[] = new byte[BUFSIZE];
+
+      while (true) {
+
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+ 
+        ds.receive(dp);
+        
+        dp.setLength(10);
+      }
+    } catch (Exception e) {
+
+    }
+  }
+}

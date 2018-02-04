@@ -1,0 +1,41 @@
+Java DatagramPacket.setData(byte[] buf)
+-------------------------------------------
+
+Syntax:-
+
+public void setData(byte[] buf)
+
+Example:-
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+
+public class Main {
+  private final static int BUFSIZE = 30;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      byte buffer[] = new byte[BUFSIZE];
+
+      while (true) {
+
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+
+        ds.receive(dp);
+ 
+        InetAddress ia = dp.getAddress();
+        System.out.println(ia);
+        
+        dp.setData(buffer);
+      }
+    } catch (Exception e) {
+
+    }
+  }

@@ -1,0 +1,36 @@
+Java DatagramPacket.setPort(int port)
+-------------------------------------------
+
+Syntax:-
+
+public void setPort(int port)
+
+Example:-
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+
+public class Main {
+  private final static int BUFSIZE = 20;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      byte buffer[] = new byte[BUFSIZE];
+
+      while (true) {
+
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+  
+        dp.setPort(9999);
+        
+      }
+    } catch (Exception e) {
+
+    }
+  }
+}

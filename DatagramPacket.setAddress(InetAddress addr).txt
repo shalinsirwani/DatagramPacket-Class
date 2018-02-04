@@ -1,0 +1,42 @@
+Java DatagramPacket .setAddress (InetAddress addr)
+---------------------------------------------------
+
+Syntax:-
+
+public void setAddress(InetAddress addr)
+
+Example:-
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+
+public class Main {
+  private final static int BUFSIZE = 50;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      byte buffer[] = new byte[BUFSIZE];
+
+      while (true) {
+
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+
+        ds.receive(dp);
+
+        InetAddress ia = dp.getAddress();
+        System.out.println(ia);
+        
+        dp.setSocketAddress(InetSocketAddress.createUnresolved("google.com", 8080));
+      }
+    } catch (Exception e) {
+
+    }
+  }
+}

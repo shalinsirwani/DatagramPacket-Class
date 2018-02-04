@@ -1,0 +1,38 @@
+Java DatagramPacket(byte[] buf, int offset, int length, InetAddress address, int port) Constructor
+----------------------------------------------------------------------------------------
+
+Syntax:-
+
+public DatagramPacket(byte[] buf,    int offset,    int length,    InetAddress address,    int port)
+
+Example:-
+
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class Main {
+  private final static int BUFSIZE = 20;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      while (true) {
+        byte buffer[] = new byte[BUFSIZE];
+
+        DatagramPacket dp = new DatagramPacket(buffer,0, buffer.length,InetAddress.getLocalHost(),9999);
+
+        ds.receive(dp);
+
+        String str = new String(dp.getData());
+
+        System.out.println(str);
+      }
+    } catch (Exception e) {
+    
+    }
+  }
+}

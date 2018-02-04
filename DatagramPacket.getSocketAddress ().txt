@@ -1,0 +1,41 @@
+Java DatagramPacket .getSocketAddress ()
+---------------------------------------------
+
+Syntax:-
+
+public SocketAddress getSocketAddress()
+
+Example:-
+
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+
+public class Main {
+  private final static int BUFSIZE = 20;
+
+  public static void main(String args[]) {
+    try {
+
+      int port = 9999;
+
+      DatagramSocket ds = new DatagramSocket(port);
+
+      byte buffer[] = new byte[BUFSIZE];
+
+      while (true) {
+
+        DatagramPacket dp = new DatagramPacket(buffer, buffer.length);
+
+        ds.receive(dp);
+   
+        InetAddress ia = dp.getAddress();
+        System.out.println(ia);
+        
+        System.out.println(dp.getSocketAddress());
+      }
+    } catch (Exception e) {
+   
+    }
+  }
+}
